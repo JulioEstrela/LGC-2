@@ -1,7 +1,7 @@
 package bolsa;
 import estruturadados.DynamicArray;
 
-public class Carteira {
+public abstract class Carteira {
     private DynamicArray<Ativo> ativos;
 
     public Carteira(DynamicArray<Ativo> ativos) {

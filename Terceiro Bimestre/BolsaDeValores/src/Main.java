@@ -4,6 +4,7 @@ import estruturadados.DynamicArray;
 public class Main {
     public static void main(String[] args) {
         Investidor investidor1 = new Investidor("Júlio", 1000);
+        Investidor investidor2 = new Investidor("Lucas", 1500);
 
         Corretora corretora1 = new Corretora("XP", 2);
         Corretora corretora2 = new Corretora("BTG Pactual", 5);
@@ -17,14 +18,19 @@ public class Main {
 
 
 
-        DynamicArray<Ativo> ativos = new DynamicArray<>();
+        DynamicArray<Investidor> investidores = new DynamicArray<>();
 
-        investidor1.comprar(acao1, corretora1, 1);
+        investidor1.comprar(acao1, corretora1, 5);
         investidor1.comprar(acao2, corretora2, 1);
-        investidor1.comprar(fii1, corretora2, 4);
+        investidor1.comprar(fii1, corretora2, 1);
+        investidor2.comprar(acao2, corretora1, 1);
+        acao1.setCotacao(100);
+        investidor1.vender(acao1, corretora1, 4);
 
-        System.out.println(investidor1.getAtivos());
+        investidores.add(investidor1);
+        investidores.add(investidor2);
+
         System.out.println(bolsa);
-
+        System.out.println(investidores);
     }
 }

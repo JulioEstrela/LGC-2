@@ -2,15 +2,17 @@ package bolsa;
 
 public class Corretora {
     private String nome;
+    private double taxaInicial;
     private double taxa;
 
-    public Corretora(String nome, double taxa) {
+    public Corretora(String nome, double taxaInicial) {
         this.nome = nome;
-        this.taxa = taxa;
+        this.taxaInicial = taxaInicial;
+        this.taxa = this.taxaInicial;
     }
 
     public double getTaxa(Ativo ativo, int quantidade) {
-        taxa = taxa/100 * ativo.getCotacao() * quantidade;
+        taxa = taxaInicial/100 * ativo.getCotacao() * quantidade;
         return taxa;
     }
 
@@ -18,7 +20,7 @@ public class Corretora {
     public String toString() {
         return "Corretora{" +
                 "nome='" + nome + '\'' +
-                ", taxa=" + taxa +
+                ", taxa=" + taxaInicial +
                 '}';
     }
 }

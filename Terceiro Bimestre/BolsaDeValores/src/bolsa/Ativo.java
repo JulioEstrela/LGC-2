@@ -19,6 +19,10 @@ public abstract class Ativo {
         return cotacao;
     }
 
+    public void setCotacao(double cotacao) {
+        this.cotacao = cotacao;
+    }
+
     @Override
     public String toString() {
         return "Ativo{" +

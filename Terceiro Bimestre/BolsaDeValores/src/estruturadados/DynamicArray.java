@@ -1,6 +1,7 @@
 package estruturadados;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Function;
@@ -44,11 +45,13 @@ public class DynamicArray<T> {
         return (T) this.elements[index];
     }
 
-    public void add(T element) {
+    public T add(T element) {
         if (this.isFull())
             this.elements = grow();
 
         this.elements[size++] = element;
+
+        return (T) this.elements;
     }
 
     private Object[] grow(){
@@ -58,15 +61,39 @@ public class DynamicArray<T> {
         }
         return tempArray;
     }
+    private Object[] diminish(T element){
+        Object[] tempArray = new Object[--this.capacity];
+
+        for (int i = indexOf(element); i < this.elements.length-1; i++){
+            tempArray[i] = elements[i+1];
+        }
+        return tempArray;
+    }
 
     @SuppressWarnings("unchecked")
-    public T remove(int index) {
-        if (this.isEmpty()) throw new RuntimeException("Static Array is already empty");
-        for (int i = index; i < this.size - 1; i++)
-            this.elements[i] = this.elements[i + 1];
+    public T remove(T element){
+        if (this.isEmpty()) throw new RuntimeException("Dynamic Array is already empty");
+
+        this.elements = diminish(element);
 
         this.size--;
         return (T) this.elements;
+    }
+
+    public int indexOf(Object o){
+        if (this.isEmpty()) throw new RuntimeException("Dynamic Array is empty");
+
+        if (o == null) {
+            for (int i = 0; i < size; i++)
+                if (elements[i]==null)
+                    return i;
+        } else {
+            for (int i = 0; i < this.elements.length; i++) {
+                if (o.equals(elements[i]))
+                    return i;
+            }
+        }
+        return -1;
     }
 
     @SuppressWarnings("unchecked")
