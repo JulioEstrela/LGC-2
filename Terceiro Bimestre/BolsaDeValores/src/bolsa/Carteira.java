@@ -1,10 +1,10 @@
 package bolsa;
-import estruturadados.StaticArray;
+import estruturadados.DynamicArray;
 
 public class Carteira {
-    private StaticArray<Ativo> ativos;
+    private DynamicArray<Ativo> ativos;
 
-    public Carteira(StaticArray<Ativo> ativos) {
+    public Carteira(DynamicArray<Ativo> ativos) {
         this.ativos = ativos;
     }
 }

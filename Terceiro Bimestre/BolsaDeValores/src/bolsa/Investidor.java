@@ -1,19 +1,19 @@
 package bolsa;
 
-import estruturadados.StaticArray;
+import estruturadados.DynamicArray;
 
 public class Investidor {
     private String nome;
-    private StaticArray<Ativo> ativos;
+    private DynamicArray<Ativo> ativos;
     private double dinheiro;
 
-    public Investidor(String nome, float dinheiro) {
+    public Investidor(String nome, double dinheiro) {
         this.nome = nome;
-        this.ativos = new StaticArray<>();
+        this.ativos = new DynamicArray<>();
         this.dinheiro = dinheiro;
     }
 
-    public void addDinheiro(float dinheiro){
+    public void addDinheiro(double dinheiro){
         this.dinheiro += dinheiro;
     }
 
@@ -29,7 +29,6 @@ public class Investidor {
         if(quantidadeNecessaria > getDinheiro())
             throw new RuntimeException("Quantidade de dinheiro indisponível: " + "Quantidade Necessária: "  + quantidadeNecessaria + " Quantidade disponível: " + getDinheiro());
 
-
         for(int i = 0; i < quantidade; i++) {
             ativos.add(ativo);
         }
@@ -37,5 +36,7 @@ public class Investidor {
         dinheiro -= quantidadeNecessaria;
     }
 
-
+    public DynamicArray<Ativo> getAtivos() {
+        return ativos;
+    }
 }
