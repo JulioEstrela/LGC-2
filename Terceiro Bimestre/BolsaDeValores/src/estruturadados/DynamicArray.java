@@ -5,38 +5,38 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Function;
 
-public class StaticArray<T> {
+public class DynamicArray<T> {
     private int size = 0;
     private int capacity;
     private Object[] elements;
 
-    public StaticArray() {
-        final int DEFAULT_CAPACITY = 10;
+    public DynamicArray() {
+        final int DEFAULT_CAPACITY = 1;
         this.capacity = DEFAULT_CAPACITY;
         this.elements = new Object[DEFAULT_CAPACITY];
         this.size = 0;
     }
-    public StaticArray(int capacity) {
+    public DynamicArray(int capacity) {
         this.capacity = capacity;
         this.elements = new Object[capacity];
         this.size = 0;
     }
 
-    /*public StaticArray<T> of(T[] elements){
-        StaticArray<T> staticArray = new StaticArray<>();
+    /*public DynamicArray<T> of(T[] elements){
+        StaticArray<T> dynamicArray = new StaticArray<>();
         for(T element : elements){
-            staticArray.add(element);
+            dynamicArray.add(element);
         }
         return staticArray;
     }*/
 
     @SafeVarargs
-    public static <E> StaticArray<E> of(E... elements) {
-        StaticArray<E> staticArray = new StaticArray<>(elements.length);
+    public static <E> DynamicArray<E> of(E... elements) {
+        DynamicArray<E> dynamicArray = new DynamicArray<>(elements.length);
         for(E element : elements){
-            staticArray.add(element);
+            dynamicArray.add(element);
         }
-        return staticArray;
+        return dynamicArray;
     }
 
     @SuppressWarnings("unchecked")
@@ -46,16 +46,17 @@ public class StaticArray<T> {
 
     public void add(T element) {
         if (this.isFull())
-            grow();
+            this.elements = grow();
 
         this.elements[size++] = element;
     }
 
-    private void grow(){
-        StaticArray<Object> tempArray = new StaticArray<>(this.capacity + 1);
-        for (Object element : elements){
-            tempArray.add(element);
+    private Object[] grow(){
+        Object[] tempArray = new Object[++this.capacity];
+        for (int i = 0; i < elements.length; i++){
+            tempArray[i] = elements[i];
         }
+        return tempArray;
     }
 
     @SuppressWarnings("unchecked")
@@ -74,8 +75,8 @@ public class StaticArray<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public StaticArray<T> filter(Predicate<T> predicate) {
-        StaticArray<T> filteredElements = new StaticArray<>(this.size);
+    public DynamicArray<T> filter(Predicate<T> predicate) {
+        DynamicArray<T> filteredElements = new DynamicArray<>(this.size);
         for (int i = 0; i < this.size; i++) {
             T element = (T) this.elements[i];
             if (predicate.test(element)) filteredElements.add(element);
@@ -85,8 +86,8 @@ public class StaticArray<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public <E> StaticArray<E> map(Function<T, E> function) {
-        StaticArray<E> mappedElements = new StaticArray<>(this.size);
+    public <E> DynamicArray<E> map(Function<T, E> function) {
+        DynamicArray<E> mappedElements = new DynamicArray<>(this.size);
         for (int i = 0; i < this.size; i++) mappedElements.add(function.apply((T) this.elements[i]));
         return mappedElements;
     }
