@@ -1,5 +1,4 @@
 package bolsa;
-
 import estruturadados.DynamicArray;
 
 public class Investidor {

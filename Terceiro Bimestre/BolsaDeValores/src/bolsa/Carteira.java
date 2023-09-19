@@ -7,4 +7,8 @@ public abstract class Carteira {
     public Carteira(DynamicArray<Ativo> ativos) {
         this.ativos = ativos;
     }
+
+    public DynamicArray<Ativo> getAtivos() {
+        return ativos;
+    }
 }
