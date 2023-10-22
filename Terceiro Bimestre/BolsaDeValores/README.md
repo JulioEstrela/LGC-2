@@ -29,6 +29,9 @@ O projeto visa demonstrar uma simulação simples sobre a bolsa de valores no ce
 > ### - Investidor
 > O investidor é a entidade que realiza as ações de compra e venda na bolsa.
 
+### IDE Utilizada:  
+Intellij
+
  ### Atividade realizada por:
 
 João Vitor Pereira Soares (https://github.com/bito132)  
