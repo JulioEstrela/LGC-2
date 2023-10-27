@@ -12,7 +12,7 @@ O projeto visa demonstrar uma simulação simples sobre a bolsa de valores no ce
 > É uma classe abstrata que abrange todos os aspectos em comum entre as entidades Ação e FII.
 
 > ### - Bolsa
-> É o orgão que regulariza e administra as corretoras. No projeto, ela é essencialmente uma entidade que
+> É o órgão que regulariza e administra as corretoras. No projeto, ela é essencialmente uma entidade que
 > armazena uma lista com as suas corretoras.
 
 > ### - Carteira
