@@ -1,0 +1,32 @@
+.underline-text-field {
+    -fx-color: #625F63;
+    -fx-background-color: #d1d2cb10;
+    -fx-border-color: #625F63; /* Cor da borda */
+    -fx-border-width: 0 0 2 0; /* Espessura da borda: superior direita inferior esquerda */
+    -fx-border-insets: 0; /* Tamanho da margem interna da borda */
+    -fx-border-radius: 0; /* Raio da borda (0 para uma borda reta) */
+    -fx-background-radius: 10px 10px 0px 0px;
+    -fx-padding: 10px;
+    -fx-prompt-text-fill: #d1d2cb;
+}
+
+.underline-text-field:focused {
+    -fx-border-color: #625F63; /* Cor da borda quando em foco */
+    -fx-background-color: #d1d2cb50; /* Cor de fundo quando em foco */
+}
+
+.base-button {
+    -fx-padding: 5px 80px;
+    -fx-background-color: #BBBDF6;
+    -fx-background-radius: 10px;
+}
+
+.base-button:hover {
+    -fx-background-color: #DBDCFA;
+    -fx-cursor: hand;
+}
+
+.box {
+    -fx-background-color: #9893DA;
+    -fx-background-radius: 10px;
+}
